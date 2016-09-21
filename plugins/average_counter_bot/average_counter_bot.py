@@ -5,26 +5,27 @@ from threading import Thread
 from bottle import route, run
 from client import slack_client as sc
 
-MORE_THAN_ONE_USER_BE_MORE_SPECIFIC = "The username given returned multiple users. Please be more specific"
-
-NO_SUCH_USER_FOUND = "No such user found"
-
-NO_NUMBERS_WRITTEN_YET = "No numbers written yet"
-
 crontable = []
 outputs = []
 
+# Configuration variables
 PERIOD_DURATION = 60
 
+# Internal management variables
 CURRENT_PERIOD_SUM = 0.0
 CURRENT_PERIOD_COUNTER = 0
 
 ALL_USERS_SUM = 0.0
 ALL_USERS_COUNTER = 0.0
 
+LAST_CHANNEL_TO_SEND_MESSAGE = ''
+
 AVERAGE_PER_USER_DICT = {}
 
-LAST_CHANNEL_TO_SEND_MESSAGE = ''
+# String Constants
+MORE_THAN_ONE_USER_BE_MORE_SPECIFIC = "The username given returned multiple users. Please be more specific"
+NO_SUCH_USER_FOUND = "No such user found"
+NO_NUMBERS_WRITTEN_YET = "No numbers written yet"
 
 crontable.append([PERIOD_DURATION, "all_people_average_last_minute"])
 
